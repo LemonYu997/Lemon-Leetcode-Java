@@ -1,6 +1,5 @@
 package demo.c0easy;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -53,7 +52,20 @@ public class T9 {
             return false;
         }
 
-        
-        return false;
+        //反转后的数
+        int revertedNumber = 0;
+
+        //原始数字<反转后的数时，表示已经处理了超过一半的数字
+        while (x > revertedNumber) {
+            //1234 % 10 = 4，得到末尾数，拼接到反转结果上
+            revertedNumber = revertedNumber * 10 + x %10;
+            //int类型/10直接抹掉最后一位
+            x /= 10;
+        }
+
+        //原始数和反转后的数一样时（就是后半部分和前半部分一样）
+        //对于奇数位数来说，如12321，经过上边的处理，x=12，revertedNumber=123
+        //把反转后多的一位去除后再比较 x = revertedNumber / 10
+        return x == revertedNumber || x == revertedNumber / 10;
     }
 }
