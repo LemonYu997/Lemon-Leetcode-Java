@@ -53,4 +53,26 @@ public class T27 {
 
         return slow;
     }
+
+    /**
+     * 官方解法：双指针优化
+     * 因为不需要考虑移除元素后的排列顺序，所以只要将后边不用移除的元素放在前边移除元素的位置就行
+     * 使用双指针，从两侧向中间遍历
+     */
+    public static int removeElement2(int[] nums, int val) {
+        int left = 0;
+        int right = nums.length;
+
+        while (left < right) {
+            //如果左指针处元素要被移除，就把右指针位置的元素放过来并重新判断
+            if (nums[left] == val) {
+                nums[left] = nums[right - 1];
+                right--;
+            } else {
+                left++;
+            }
+        }
+
+        return left;
+    }
 }
