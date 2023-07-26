@@ -11,4 +11,14 @@ public class Demo01 {
         //先自增再取值，所以这里输出1+1=2
         System.out.println(++a);
     }
+
+    @Test
+    public void test02() {
+        int a = 1;
+        int b = 1;
+
+        int sum = (a + b) / 2;
+
+        System.out.println(sum % 2);
+    }
 }
