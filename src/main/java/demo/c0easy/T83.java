@@ -4,11 +4,11 @@ package demo.c0easy;
  * 83  删除排序链表中的重复元素  https://leetcode.cn/problems/remove-duplicates-from-sorted-list/
  * 给定一个已排序的链表，删除其中的重复元素，并按原顺序返回
  * 求有多少种方法可以爬到楼顶
- * <p>
+ *
  * 示例1：
  * 输入：head = [1,1,2]
  * 输出：[1,2]
- * <p>
+ *
  * 示例2：
  * 输入：head = [1,1,2,3,3]
  * 输出：[1,2,3]
