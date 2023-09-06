@@ -38,6 +38,43 @@ public class T88 {
     }
 
     /**
+     * 官方实现：双指针，因为原始的两个数组已经被排好序，只需要分别遍历两个数组即可
+     */
+    public void merge2(int[] nums1, int m, int[] nums2, int n) {
+        //第一个数组的指针
+        int p1 = 0;
+        //第二个数组的指针
+        int p2 = 0;
+        //存放结果
+        int[] sorted = new int[m + n];
+        //当前数
+        int cur;
+        //遍历两个数组，直到两个数组都被遍历完
+        while (p1 < m || p2 < n) {
+            //如果第一个数组已经遍历完了，就把第二个数组剩下的元素添加到后边
+            if (p1 == m) {
+                cur = nums2[p2++];
+            } else if (p2 == n) {
+                //如果第二个数组已经遍历完了，就把第一个数组剩下的元素添加到后边
+                cur = nums1[p1++];
+            } else if (nums1[p1] < nums2[p2]) {
+                //如果第一个元素当前数比第二个元素当前数小，采用第一个数组的当前数
+                cur = nums1[p1++];
+            } else {
+                cur = nums2[p2++];
+            }
+
+            //将当前应该放入的数放入结果数组，注意索引位置
+            sorted[p1 + p2 - 1] = cur;
+        }
+
+        //将遍历后的结果复制回去
+        for (int i = 0; i < m + n; i++) {
+            nums1[i] = sorted[i];
+        }
+    }
+
+    /**
      * 冒泡排序
      */
     public void bubbleSort(int[] arr) {
