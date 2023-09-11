@@ -1,5 +1,7 @@
 package demo.c0easy;
 
+import java.util.Random;
+
 /**
  * 108 将有序数组转换为二叉搜索树 https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/
  * 给定一个整数数组nums，其中元素已经按升序排列，将其转换为一个高度平衡二叉搜索树
@@ -51,9 +53,59 @@ public class T108 {
         //总是选择中间位置左边的数字作为根节点
         int mid = (left + right) / 2;
 
+        //根节点及其每个子树的根节点（递归到的时候）
         TreeNode root = new TreeNode(nums[mid]);
+        //左子树
         root.left = helper1(nums, left, mid - 1);
+        //右子树
         root.right = helper1(nums, mid + 1, right);
+
+        return root;
+    }
+
+    /**
+     * 官方解法2：中序遍历，总是选择中间位置的右边的数字作为根节点
+     * mid = (left + right + 1) / 2
+     */
+    public TreeNode sortedArrayToBST2(int[] nums) {
+        return helper2(nums, 0, nums.length - 1);
+    }
+
+    public TreeNode helper2(int[] nums, int left, int right) {
+        if (left > right) {
+            return null;
+        }
+
+        //总是选择中间位置右边的数字作为根节点
+        int mid = (left + right + 1) / 2;
+
+        TreeNode root = new TreeNode(nums[mid]);
+        root.left = helper2(nums, left, mid - 1);
+        root.right = helper2(nums, mid + 1, right);
+        return root;
+    }
+
+    /**
+     * 官方解法3：中序遍历，选择任意一个中间位置数字作为根节点
+     * mid = (left + right) / 2 或者 mid = (left + right + 1) / 2
+     */
+    public TreeNode sortedArrayToBST3(int[] nums) {
+        return helper3(nums, 0, nums.length - 1);
+    }
+
+    Random rand = new Random();
+
+    public TreeNode helper3(int[] nums, int left, int right) {
+        if (left > right) {
+            return null;
+        }
+
+        //选择任意一个中间位置数字作为根节点
+        int mid = (left + right + rand.nextInt(2)) / 2;
+
+        TreeNode root = new TreeNode(nums[mid]);
+        root.left = helper3(nums, left, mid - 1);
+        root.right = helper3(nums, mid + 1, right);
 
         return root;
     }
