@@ -6,11 +6,11 @@ import java.util.Queue;
 /**
  * 101 对称二叉树 https://leetcode.cn/problems/symmetric-tree/
  * 给定一个二叉树，判断其是否轴对称
- * <p>
+ *
  * 示例：
  * 输入1：root = [1,2,2,3,4,4,3]
  * 输出1：true
- * <p>
+ *
  * 输入2：root = [1,2,2,null,3,null,3]
  * 输出2：false
  */
