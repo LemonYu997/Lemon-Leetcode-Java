@@ -69,6 +69,7 @@ public class T225 {
         public void push(int x) {
             int n = queue.size();
             queue.offer(x);
+            //队尾变队首
             for (int i = 0; i < n; i++) {
                 queue.offer(queue.poll());
             }
