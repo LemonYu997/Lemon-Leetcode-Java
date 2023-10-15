@@ -65,4 +65,22 @@ public class T338 {
         }
         return count;
     }
+
+    /**
+     * 官方解法2：动态规划——最高有效位
+     */
+    public int[] countBits2(int n) {
+        int[] ans = new int[n + 1];
+        int highBit = 0;
+
+        for (int i = 0; i <= n; i++) {
+            if ((i & (i - 1)) == 0) {
+                highBit = i;
+            }
+            ans[i] = ans[i - highBit] + 1;
+        }
+        return ans;
+    }
+
+
 }
