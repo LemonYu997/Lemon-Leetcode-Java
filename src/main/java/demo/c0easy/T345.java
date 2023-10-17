@@ -49,6 +49,7 @@ public class T345 {
 
     //判断是否为元音字母
     public boolean isVowel(char c) {
+        //没有的时候返回的是-1
         return "aeiouAEIOU".indexOf(c) >= 0;
     }
 }
