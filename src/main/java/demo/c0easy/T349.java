@@ -44,6 +44,7 @@ public class T349 {
         int index2 = 0;
         int l1 = nums1.length;
         int l2 = nums2.length;
+        //返回结果及其索引
         int[] ans = new int[l1 + l2];
         int index = 0;
 
@@ -52,6 +53,7 @@ public class T349 {
             int num2 = nums2[index2];
 
             if (num1 == num2) {
+                //保证返回结果是唯一的
                 if (index == 0 || num1 != ans[index - 1]) {
                     ans[index] = num1;
                     index++;
@@ -59,6 +61,7 @@ public class T349 {
                 index1++;
                 index2++;
             } else if (num1 < num2) {
+                //如果不一致，指针就向前移动
                 index1++;
             } else {
                 index2++;
