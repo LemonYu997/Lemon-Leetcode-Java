@@ -65,4 +65,38 @@ public class T387 {
 
         return -1;
     }
+
+    /**
+     * 官方解法2：使用哈希表存储索引
+     */
+    public int firstUniqChar2(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        char[] chars = s.toCharArray();
+        int n = chars.length;
+
+        //第一次遍历，只要重复出现过某一字符，就将value设为-1
+        for (int i = 0; i < n; i++) {
+            char c = chars[i];
+            if (map.containsKey(c)) {
+                map.put(c, -1);
+            } else {
+                map.put(c, i);
+            }
+        }
+
+        //找到不为-1的最小值（最低索引），即为首个不重复字符
+        int first = n;
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            int index = entry.getValue();
+            if (index != -1 && index < first) {
+                first = index;
+            }
+        }
+        //如果没有找到
+        if (first == n) {
+            first = -1;
+        }
+
+        return first;
+    }
 }
