@@ -25,10 +25,12 @@ public class T645 {
         int n = nums.length;
         Map<Integer, Integer> map = new HashMap<>();
 
+        //放入map
         for (int num : nums) {
             map.put(num, map.getOrDefault(num, 0) + 1);
         }
 
+        //遍历1~n，如果map中出现次数为0，说明是缺少的，如果map中出现次数为2，说明是重复的
         for (int i = 1; i <= n; i++) {
             int count = map.getOrDefault(i, 0);
             if (count == 2) {
@@ -39,5 +41,30 @@ public class T645 {
         }
 
         return ans;
+    }
+
+    /**
+     * 评论解法：数学
+     * sum(nums)- sum(set(nums))，原数组求和 - 去重后求和，即为重复的数字
+     * sum(1~n) - sum(set(nums))，理论和 - 去重后求和，即为缺失的数字
+     */
+    public int[] findErrorNums1(int[] nums) {
+        int n = nums.length;
+        //重复标识 0表示未计算，1表示已计算
+        int[] cnts = new int[n + 1];
+        //理论和
+        int total = (1 + n) * n / 2;
+        int sum = 0;    //实际和
+        int set = 0;    //去重后的和
+
+        for (int num : nums) {
+            sum += num;
+            if (cnts[num] == 0) {
+                set += num;
+            }
+            cnts[num] = 1;
+        }
+
+        return new int[]{sum - set, total - set};
     }
 }
