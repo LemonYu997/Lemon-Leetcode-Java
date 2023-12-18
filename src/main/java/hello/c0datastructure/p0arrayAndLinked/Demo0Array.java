@@ -3,9 +3,9 @@ package hello.c0datastructure.p0arrayAndLinked;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * 数组
+ * 数组 https://www.hello-algo.com/chapter_array_and_linkedlist/array/
  * 将相同类型的元素存储在连续的内存空间中
- * <p>
+ *
  * 常用操作：
  * 1、初始化
  * 2、访问元素
