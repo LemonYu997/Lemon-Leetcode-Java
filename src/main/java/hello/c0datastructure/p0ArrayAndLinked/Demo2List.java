@@ -1,4 +1,4 @@
-package hello.c0datastructure.p0arrayAndLinked;
+package hello.c0datastructure.p0ArrayAndLinked;
 
 import java.util.ArrayList;
 import java.util.Arrays;

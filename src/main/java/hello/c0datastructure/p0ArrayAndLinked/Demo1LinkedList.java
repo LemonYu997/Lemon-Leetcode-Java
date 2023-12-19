@@ -1,6 +1,4 @@
-package hello.c0datastructure.p0arrayAndLinked;
-
-import java.util.LinkedList;
+package hello.c0datastructure.p0ArrayAndLinked;
 
 /**
  * 链表 https://www.hello-algo.com/chapter_array_and_linkedlist/linked_list/
