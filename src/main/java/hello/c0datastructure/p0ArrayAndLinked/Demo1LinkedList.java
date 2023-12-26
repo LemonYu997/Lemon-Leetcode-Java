@@ -49,7 +49,7 @@ public class Demo1LinkedList {
         int val;        //节点值
         ListNode next;  //指向下一节点的引用
         //构造函数
-        ListNode(int val) {
+        public ListNode(int val) {
             this.val = val;
         }
     }
