@@ -146,6 +146,7 @@ public class Demo0Heap {
             return val;
         }
 
+        //由顶至底进行堆化
         void siftDown(int i) {
             while (true) {
                 // 判断节点 i l r 中的最大节点，记为 ma
@@ -166,6 +167,19 @@ public class Demo0Heap {
                 swap(i, ma);
                 // 循环向下堆化
                 i = ma;
+            }
+        }
+
+        /**
+         * 建堆操作 使用已有数组建堆 时间复杂度 O(n)
+         * 倒序遍历堆（层序遍历的倒序），依次对每个非叶节点执行“从顶至底堆化”
+         */
+        public MaxHeap(List<Integer> nums) {
+            // 将列表元素原封不动添加到堆
+            maxHeap = new ArrayList<>(nums);
+            // 倒序遍历堆 堆化除叶节点以外的其他所有节点
+            for (int i = parent(size() - 1); i >= 0; i--) {
+                siftDown(i);
             }
         }
     }
