@@ -20,7 +20,9 @@ public class T859 {
     /**
      * 自己实现：使用数组 int[26] 对每个字符计数 （因为只包含小写字母）
      * 先判断 s 和 goal 长度是否相等
-     * 判断
+     * 判断两个字符串是否一致：
+     *  1、一致，只要判断 s 中有两个重复字符，就可以互相替换，返回 true 即可
+     *  2、不一致，同时遍历两个字符串，找到不一致的字符（只能两个），然后判断是否能替换
      */
     public boolean buddyStrings(String s, String goal) {
         int m = s.length();
