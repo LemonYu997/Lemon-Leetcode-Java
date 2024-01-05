@@ -12,7 +12,7 @@ public class Demo1BinarySearchInsertion {
      * 1、数组中存在 target 时，则插入位置就是 target 所处位置
      * 2、数组中不存在 target 时，插入最终 i 处的位置
      */
-    int binarySearchInsertionSimple(int[] nums, int target) {
+    public static int binarySearchInsertionSimple(int[] nums, int target) {
         // 初始化双闭区间 [0, n-1]
         int i = 0;
         int j = nums.length - 1;
@@ -38,7 +38,7 @@ public class Demo1BinarySearchInsertion {
      *  先用普通二分查找找到对应的 target 所在索引
      *  当找到 target 时，说明元素在 [i, m-1] 区间中，使用 j = m-1 缩小区间
      */
-    int binarySearchInsertion(int[] nums, int target) {
+    public static int binarySearchInsertion(int[] nums, int target) {
         // 初始化闭区间 [0, n-1]
         int i = 0;
         int j = nums.length - 1;
