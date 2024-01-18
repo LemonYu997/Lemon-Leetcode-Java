@@ -1,4 +1,4 @@
-package hello.c1algorithm.p3backtracking;
+package hello.c1algorithm.p3Backtracking;
 
 import hello.c0datastructure.p3Tree.TreeNode;
 

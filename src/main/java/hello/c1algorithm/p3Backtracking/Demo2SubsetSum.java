@@ -1,4 +1,4 @@
-package hello.c1algorithm.p3backtracking;
+package hello.c1algorithm.p3Backtracking;
 
 import java.util.ArrayList;
 import java.util.Arrays;
