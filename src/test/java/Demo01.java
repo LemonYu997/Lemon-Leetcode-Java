@@ -1,7 +1,9 @@
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Demo01 {
     @Test
@@ -57,5 +59,12 @@ public class Demo01 {
     @Test
     public void test05() {
         List<String> list = new ArrayList<>();
+    }
+
+    @Test
+    public void test06() {
+        Map<Integer, Integer> map = new HashMap<>();
+        Integer put = map.put(1, 4);
+        System.out.println(put);
     }
 }
