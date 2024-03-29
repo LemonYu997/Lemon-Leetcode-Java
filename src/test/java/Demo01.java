@@ -67,4 +67,16 @@ public class Demo01 {
         Integer put = map.put(1, 4);
         System.out.println(put);
     }
+
+    @Test
+    public void test07() {
+        try {
+            int a = 2;
+            int b = 0;
+            a = a / (b + 1);
+            System.out.println("忽略");
+        } catch (ArithmeticException ignored) {
+
+        }
+    }
 }
