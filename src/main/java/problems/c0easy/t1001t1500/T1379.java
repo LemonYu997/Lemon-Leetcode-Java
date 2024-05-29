@@ -1,5 +1,8 @@
 package problems.c0easy.t1001t1500;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 /**
  * 1379 找出克隆二叉树中的相同节点 https://leetcode.cn/problems/find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree/description/
  * 给你两棵二叉树，原始树 original 和克隆树 cloned，
@@ -31,17 +34,47 @@ public class T1379 {
         }
     }
 
-    public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
+    /**
+     * 官方解法1：深度优先搜索
+     */
+    public final TreeNode getTargetCopy1(final TreeNode original, final TreeNode cloned, final TreeNode target) {
         if (original == null) {
             return null;
         }
         if (original == target) {
             return cloned;
         }
-        TreeNode left = getTargetCopy(original.left, cloned.left, target);
+        TreeNode left = getTargetCopy1(original.left, cloned.left, target);
         if (left != null) {
             return left;
         }
-        return getTargetCopy(original.right, cloned.right, target);
+        return getTargetCopy1(original.right, cloned.right, target);
+    }
+
+    /**
+     * 官方解法2：广度优先搜索
+     */
+    public final TreeNode getTargetCopy2(final TreeNode original, final TreeNode cloned, final TreeNode target) {
+        Queue<TreeNode> q1 = new ArrayDeque<>();
+        Queue<TreeNode> q2 = new ArrayDeque<>();
+        q1.offer(original);
+        q2.offer(cloned);
+
+        while (q1.size() > 0) {
+            TreeNode node1 = q1.poll();
+            TreeNode node2 = q2.poll();
+            if (node1 == target) {
+                return node2;
+            }
+            if (node1.left != null) {
+                q1.offer(node1.left);
+                q2.offer(node2.left);
+            }
+            if (node1.right != null) {
+                q1.offer(node1.right);
+                q2.offer(node2.right);
+            }
+        }
+        return null;
     }
 }
