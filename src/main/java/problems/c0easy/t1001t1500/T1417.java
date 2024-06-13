@@ -50,7 +50,7 @@ public class T1417 {
             i++;
         }
 
-        char ans[] = new char[s.length()];
+        char[] ans = new char[s.length()];
 
         char[] chars = s.toCharArray();
         for (int k = 0; k < chars.length; k++) {
