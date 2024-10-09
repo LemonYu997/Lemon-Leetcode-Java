@@ -34,7 +34,7 @@ public class T1678 {
                     // 将 () 转为 o，索引要向前一位
                     sb.append('o');
                     i++;
-                } else if (command.charAt(i + 1) == 'a') {
+                } else {
                     // 说明此时是 (al) i 向后跳 3位
                     sb.append("al");
                     i += 3;
