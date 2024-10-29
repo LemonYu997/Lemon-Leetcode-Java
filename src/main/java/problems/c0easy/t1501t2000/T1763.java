@@ -56,30 +56,56 @@ public class T1763 {
         return s.substring(maxPos, maxPos + maxLen);
     }
 
-//    /**
-//     * 官方解法2：分治策略
-//     */
-//    class Solution {
-//        private int maxPos;
-//        private int maxLen;
-//
-//        public String longestNiceSubstring(String s) {
-//            this.maxLen = 0;
-//            this.maxPos = 0;
-//            dfs(s, 0, s.length() - 1);
-//            return s.substring(maxPos, maxPos + maxLen);
-//        }
-//
-//        /**
-//         * 分治方法
-//         */
-//        public void dfs(String s, int start, int end) {
-//            if (start >= end) {
-//                return;
-//            }
-//
-//            int lower = 0;
-//            int upper = 0;
-//        }
-//    }
+    /**
+     * 官方解法2：分治策略
+     */
+    class Solution {
+        private int maxPos;
+        private int maxLen;
+
+        public String longestNiceSubstring(String s) {
+            this.maxLen = 0;
+            this.maxPos = 0;
+            dfs(s, 0, s.length() - 1);
+            return s.substring(maxPos, maxPos + maxLen);
+        }
+
+        /**
+         * 分治方法
+         */
+        public void dfs(String s, int start, int end) {
+            if (start >= end) {
+                return;
+            }
+
+            int lower = 0;
+            int upper = 0;
+
+            for (int i = start; i <= end; i++) {
+                if (Character.isLowerCase(s.charAt(i))) {
+                    lower |= 1 << (s.charAt(i) - 'a');
+                } else {
+                    upper |= 1 << (s.charAt(i) - 'A');
+                }
+            }
+
+            if (lower == upper) {
+                if (end - start + 1 > maxLen) {
+                    maxPos = start;
+                    maxLen = end - start + 1;
+                }
+                return;
+            }
+            int valid = lower & upper;
+            int pos = start;
+            while (pos <= end) {
+                start = pos;
+                while (pos <= end && (valid & (1 << Character.toLowerCase(s.charAt(pos)) - 'a')) != 0) {
+                    pos++;
+                }
+                dfs(s, start, pos - 1);
+                pos++;
+            }
+        }
+    }
 }
