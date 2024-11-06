@@ -32,4 +32,30 @@ public class T1791 {
         // 假设正确，返回 a
         return a;
     }
+
+    /**
+     * 官方解法：计算每个节点的度，为 n - 1的即为中心节点
+     */
+    public int findCenter1(int[][] edges) {
+        int n = edges.length + 1;
+        int[] degrees = new int[n + 1];
+
+        for (int[] edge : edges) {
+            degrees[edge[0]]++;
+            degrees[edge[1]]++;
+        }
+
+        for (int i = 1; ; i++) {
+            if (degrees[i] == n - 1) {
+                return i;
+            }
+        }
+    }
+
+    /**
+     * 官方解法：找到任意两条边的公共节点
+     */
+    public int findCenter2(int[][] edges) {
+        return edges[0][0] == edges[1][0] || edges[0][0] == edges[1][1] ? edges[0][0] : edges[0][1];
+    }
 }
