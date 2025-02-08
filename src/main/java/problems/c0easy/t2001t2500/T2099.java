@@ -35,7 +35,7 @@ public class T2099 {
 
         // 按照 nums[i] 从大到小排
         Arrays.sort(idxMap, (a, b) -> b[1] - a[1]);
-        // 按照索引从小到大排列
+        // 按照索引从小到大排列 即前 k 个值的原索引
         Arrays.sort(idxMap, 0, k, (a, b) -> a[0] - b[0]);
 
         int[] ans = new int[k];
