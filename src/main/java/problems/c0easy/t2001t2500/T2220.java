@@ -22,4 +22,24 @@ public class T2220 {
     public int minBitFlips(int start, int goal) {
         return Integer.bitCount(start ^ goal);
     }
+
+    /**
+     * 官方解法：展示详细细节
+     */
+    public int minBitFlips1(int start, int goal) {
+        int ans = 0;
+        // 只要有一个大于0，就继续判断
+        while (start > 0 || goal > 0) {
+            // 判断对应位置的两个数是否相同，不同则 + 1
+            // 用 1 与，即可只判断最后一位
+            if ((start & 1) != (goal & 1)) {
+                ans++;
+            }
+
+            // 指针向前移动 1 位
+            start >>= 1;
+            goal >>= 1;
+        }
+        return ans;
+    }
 }
