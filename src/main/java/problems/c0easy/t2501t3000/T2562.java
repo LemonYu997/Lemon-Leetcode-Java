@@ -38,7 +38,7 @@ public class T2562 {
     }
 
     /**
-     * 社区优化解法：双指针
+     * 社区解法：双指针
      */
     public long findTheArrayConcVal1(int[] nums) {
         long ans = 0;
