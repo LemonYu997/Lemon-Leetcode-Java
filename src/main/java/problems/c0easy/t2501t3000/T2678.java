@@ -32,4 +32,19 @@ public class T2678 {
         }
         return ans;
     }
+
+    /**
+     * 优化解法：直接取数
+     */
+    public int countSeniors1(String[] details) {
+        int ans = 0;
+        for (String detail : details) {
+            int a = detail.charAt(11) - '0';
+            int b = detail.charAt(12) - '0';
+            if (a * 10 + b > 60) {
+                ans++;
+            }
+        }
+        return ans;
+    }
 }
