@@ -1,7 +1,9 @@
 package problems.c0easy.t2501t3000;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 2848 与车相交的点 https://leetcode.cn/problems/points-that-intersect-with-cars/description/
@@ -36,5 +38,45 @@ public class T2848 {
         }
 
         return Arrays.stream(temp).sum();
+    }
+
+    /**
+     * 官方解法：
+     */
+    public int numberOfPoints1(List<List<Integer>> nums) {
+        int C = 0;
+        // 得到所有区间的最大值
+        for (List<Integer> num : nums) {
+            C = Math.max(C, num.get(1));
+        }
+
+        // 统计出现的次数
+        int[] count = new int[C + 1];
+        for (List<Integer> num : nums) {
+            for (int i = num.get(0); i <= num.get(1); i++) {
+                count[i]++;
+            }
+        }
+
+        int ans = 0;
+        for (int i = 1; i <= C; i++) {
+            if (count[i] > 0) {
+                ans++;
+            }
+        }
+        return ans;
+    }
+
+    /**
+     * 社区解法：set去重
+     */
+    public int numberOfPoints2(List<List<Integer>> nums) {
+        Set<Integer> set = new HashSet<>();
+        for (List<Integer> num : nums) {
+            for (int i = num.get(0); i <= num.get(1); i++) {
+                set.add(i);
+            }
+        }
+        return set.size();
     }
 }
