@@ -42,4 +42,22 @@ public class T3079 {
 
         return ans;
     }
+
+    /**
+     * 社区解法：优化实现
+     */
+    public int sumOfEncryptedInt1(int[] nums) {
+        int ans = 0;
+        for (int num : nums) {
+            int max = 0;
+            int base = 0;
+            while (num > 0) {
+                max = Math.max(max, num % 10);
+                base = base * 10 + 1;
+                num /= 10;
+            }
+            ans += base * max;
+        }
+        return ans;
+    }
 }
