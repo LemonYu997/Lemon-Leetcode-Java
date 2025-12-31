@@ -27,7 +27,7 @@ public class T3095 {
             int value = 0;
             for (int j = i; j < n; j++) {
                 value |= nums[j];
-                if (value > k) {
+                if (value >= k) {
                     res = Math.min(res, j - i + 1);
                     break;
                 }
