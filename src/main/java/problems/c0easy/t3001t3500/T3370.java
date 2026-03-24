@@ -25,4 +25,15 @@ public class T3370 {
         String target = binaryString.replace('0', '1');
         return Integer.parseInt(target, 2);
     }
+
+    /**
+     * 官方解法：根据规律计算
+     */
+    public int smallestNumber1(int n) {
+        int x = 1;
+        while (x < n) {
+            x = x * 2 + 1;
+        }
+        return x;
+    }
 }
