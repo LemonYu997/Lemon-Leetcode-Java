@@ -78,8 +78,7 @@ public class T3692 {
             if (c == 0) {
                 continue;
             }
-            final int idx = i;
-            groups.computeIfAbsent(c, k -> new StringBuilder().append((char) 'a' + idx));
+            groups.computeIfAbsent(c, k -> new StringBuilder()).append((char)('a' + i));
             if (mx == 0
                     || groups.get(c).length() > groups.get(mx).length()
                     || groups.get(c).length() == groups.get(mx).length()
